@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Cliente
+actor Fábrica
+actor Socio
+Fábrica ..>  Socio : <<Include>>
+rectangle SectorAlimentario {
+    (Productos) - Fábrica : <<Elabora>> 
+    (Obtiene Beneficios) - Socio
+    (Productos) - Socio : <<Retira>>
+    (Venta del producto) - Socio
+    (Venta del producto) <... (En la propia tienda) :<<Extends>>
+    (En la propia tienda) ..> (Lotes de productos) : <<Include>>
+    (Venta del producto) <... (A otro socio) :<<Extends>>
+    (Venta del producto) <... (En la tienda de fábrica) :<<Extends>>
+    (Venta del producto) <... (Por la página web) :<<Extends>>
+    Cliente - (Compra productos)
+    Cliente - (Por la página web) : <<Consulta>>
+    (Obtiene Beneficios) <. (Venta del producto) : <<Include>>
+    (Compra productos) - (Venta del producto)
+}
+@enduml

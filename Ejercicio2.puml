@@ -1,0 +1,36 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor Alumno
+actor Profesor
+rectangle Moodle {
+    (Curso) - Alumno
+    (Curso) <.. (Subir entregas) : <<Extends>>
+    (Curso) <.. (Consultar Moodle) : <<Extends>>
+    (Curso) <.. (Materia) : <<Include>>
+    (Consultar Moodle) <.. (Calificaciones) : <<Extends>>
+    (Consultar Moodle) <.. (Tareas) : <<Extends>>
+    (Consultar Moodle) <.. (Mensajes) : <<Extends>>
+    (Consultar Moodle) <.. (Contenidos) : <<Extends>>
+    (Gestión de grupos) - Profesor
+    (Gestión de grupos) <.. (Añadir alumno) : <<Extends>>
+    (Gestión de grupos) <.. (Eliminar alumno) : <<Extends>>
+    (Gestión de grupos) <.. (Modificar alumno) : <<Extends>>
+    (Gestión nuevo curso) - Profesor
+    (Gestión nuevo curso) <.. (Añadir curso) : <<Extends>>
+    (Gestión nuevo curso) <.. (Eliminar curso) : <<Extends>>
+    (Gestión nuevo curso) <.. (Modificar curso) : <<Extends>>
+    (Gestión nuevo curso) <.. (Crear curso) : <<Extends>>
+    (Gestión de temas) - Profesor
+    (Gestión de temas) <.. (Modificar tareas) : <<Extends>>
+    (Gestión de temas) <.. (Modificar contenidos) : <<Extends>>
+    (Gestión de temas) <.. (Modificar mensajes) : <<Extends>>
+    (Gestión de temas) <.. (Hacer seguimiento) : <<Extends>>
+    (Gestión de calificaciones) - Profesor
+    (Gestión de calificaciones) <.. (Añadir calificaciones) : <<Extends>>
+    (Gestión de calificaciones) <.. (Eliminar calificaciones) : <<Extends>>
+    (Gestión de calificaciones) <.. (Modificar calificaciones) : <<Extends>>
+    (Gestión de temas) ..> (Materia) : <<Include>>
+    (Gestión nuevo curso) ..> (Curso) : <<Include>>
+}
+@enduml
